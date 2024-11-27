@@ -1,11 +1,13 @@
 import { Counter } from "../counter/counter";
+import { useCounter } from "../counter/useCounter";
 
 export const MenuItem = ({ menuItem }) => {
   const { name } = menuItem;
+  const { count, increment, decrement } = useCounter(0, 5);
   return (
     <div>
       <span>{name}</span>
-      <Counter min={0} max={5} cur={0} />
+      <Counter increment={increment} decrement={decrement} value={count} />
     </div>
   );
 };
