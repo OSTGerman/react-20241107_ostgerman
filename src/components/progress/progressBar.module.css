@@ -1,0 +1,14 @@
+.progressBarContainer {
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+.progressBar {
+  height: 8px;
+  background: var(--accent);
+}
+
+.progressBar_full {
+  background: var(--marked);
+}

@@ -1,4 +1,4 @@
-import { Counter } from "../counter/counter";
+import { Counter, VARIANT_THUMB } from "../counter/counter";
 import { useReview } from "./useReview";
 
 export const ReviewForm = () => {
@@ -35,6 +35,7 @@ export const ReviewForm = () => {
           <label htmlFor="rating">Rate us</label>
           <Counter
             name="rating"
+            variant={VARIANT_THUMB}
             value={rating}
             increment={incrementRating}
             decrement={decrementRating}
