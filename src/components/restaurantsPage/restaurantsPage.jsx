@@ -7,7 +7,7 @@ export const RestaurantsPage = ({ restaurants }) => {
       items={restaurants}
       headerFunc={({ name }) => name}
       keyFunc={({ id }) => id}
-      contentFunc={(item) => <Restaurant restaurant={item} />}
+      contentFunc={(item) => <Restaurant key={item.id} restaurant={item} />}
     />
   );
 };

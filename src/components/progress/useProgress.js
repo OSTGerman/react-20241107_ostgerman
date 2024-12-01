@@ -18,7 +18,7 @@ const getScrollPercentage = () =>
   );
 
 export const useProgress = () => {
-  const [progress, setProgress] = useState(() => getScrollPercentage());
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const onWindowScroll = () => {

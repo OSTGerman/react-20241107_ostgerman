@@ -1,0 +1,23 @@
+.counterIncrement_default::before {
+  content: '+';
+}
+
+.counterDecrement_default::before {
+  content: '-';
+}
+
+.counterIncrement_thumb {
+  background: var(--accent-bg);
+}
+
+.counterIncrement_thumb::before {
+  content: '👍';
+}
+
+.counterDecrement_thumb {
+  background: var(--accent-bg);
+}
+
+.counterDecrement_thumb::before {
+  content: '👎';
+}

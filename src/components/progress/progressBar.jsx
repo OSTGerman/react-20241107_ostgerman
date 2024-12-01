@@ -1,11 +1,16 @@
+import classNames from "classnames";
 import { useProgress } from "./useProgress";
+import styles from "./progressBar.module.css";
 
 export const ProgressBar = () => {
   const progress = useProgress();
   return (
-    <div style={{ width: "100%", position: "sticky", top: "0" }}>
+    <div className={classNames(styles.progressBarContainer)}>
       <div
-        style={{ width: `${progress}%`, height: "8px", background: "grey" }}
+        className={classNames(styles.progressBar, {
+          [styles.progressBar_full]: progress === 100,
+        })}
+        style={{ width: `${progress}%` }}
       ></div>
     </div>
   );
