@@ -5,7 +5,7 @@ import styles from "./progressBar.module.css";
 export const ProgressBar = () => {
   const progress = useProgress();
   return (
-    <div className={classNames(styles.progressBarContainer)}>
+    <div className={styles.progressBarContainer}>
       <div
         className={classNames(styles.progressBar, {
           [styles.progressBar_full]: progress === 100,
