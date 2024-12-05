@@ -1,0 +1,13 @@
+.tabItem {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.tabItem_selected {
+  background-color: var(--disabled);
+  color: var(--text-light);
+}
