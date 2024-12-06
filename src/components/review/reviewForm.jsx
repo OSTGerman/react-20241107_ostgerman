@@ -1,3 +1,4 @@
+import { useAuth } from "../authContext/useAuth";
 import { Counter, VARIANT_THUMB } from "../counter/counter";
 import { useReview } from "./useReview";
 
@@ -7,9 +8,11 @@ export const ReviewForm = () => {
 
   const { name, text, rating } = state;
 
+  const { login } = useAuth();
+
   return (
     <>
-      <h4>We are eager to hear you opinion</h4>
+      <h4>We are eager to hear you opinion, {login}</h4>
       <form
         onSubmit={(e) => {
           e.preventDefault();

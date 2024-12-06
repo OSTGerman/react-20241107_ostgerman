@@ -1,6 +1,9 @@
+import { useAuth } from "../authContext/useAuth";
 import { ReviewForm } from "./reviewForm";
 
 export const Reviews = ({ data: reviews }) => {
+  const { isAuthorized } = useAuth();
+
   return (
     <>
       <h3>Reviews</h3>
@@ -11,7 +14,7 @@ export const Reviews = ({ data: reviews }) => {
           reviews.map(({ id, text }) => <li key={id}>{text}</li>)
         )}
       </ul>
-      <ReviewForm />
+      {isAuthorized && <ReviewForm />}
     </>
   );
 };

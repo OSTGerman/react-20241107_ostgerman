@@ -1,23 +1,27 @@
-.counterIncrement_default::before {
+.default.increment::before {
   content: '+';
 }
 
-.counterDecrement_default::before {
+.default.decrement::before {
   content: '-';
 }
 
-.counterIncrement_thumb {
+.thumb {
   background: var(--accent-bg);
 }
 
-.counterIncrement_thumb::before {
+.thumb.increment.light::before {
   content: '👍';
 }
 
-.counterDecrement_thumb {
-  background: var(--accent-bg);
+.thumb.decrement.light::before {
+  content: '👎';
 }
 
-.counterDecrement_thumb::before {
-  content: '👎';
+.thumb.increment.dark::before {
+  content: '🌟';
+}
+
+.thumb.decrement.dark::before {
+  content: '👾';
 }

@@ -8,7 +8,7 @@ export const ProgressBar = () => {
     <div className={styles.progressBarContainer}>
       <div
         className={classNames(styles.progressBar, {
-          [styles.progressBar_full]: progress === 100,
+          [styles.full]: progress === 100,
         })}
         style={{ width: `${progress}%` }}
       ></div>
