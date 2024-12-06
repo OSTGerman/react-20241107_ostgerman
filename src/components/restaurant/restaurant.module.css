@@ -1,15 +1,15 @@
-.restaurantImage {
+.image {
   width: 100%;
   height: 360px;
   object-fit: cover;
   line-height: normal;
 }
 
-.restaurantImageContainer {
+.imageContainer {
   height: 360px;
 }
 
-.restaurantImagePlaceholder {
+.imagePlaceholder {
   width: 100%;
   height: 100%;
   background-color: var(--disabled);
