@@ -20,11 +20,11 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <article>
       <h2>{name}</h2>
-      <div className={styles.restaurantImageContainer}>
+      <div className={styles.imageContainer}>
         {image ? (
-          <img className={styles.restaurantImage} src={image}></img>
+          <img className={styles.image} src={image}></img>
         ) : (
-          <div className={styles.restaurantImagePlaceholder}></div>
+          <div className={styles.imagePlaceholder}></div>
         )}
       </div>
 

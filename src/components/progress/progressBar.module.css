@@ -9,6 +9,6 @@
   background: var(--accent);
 }
 
-.progressBar_full {
+.full {
   background: var(--marked);
 }

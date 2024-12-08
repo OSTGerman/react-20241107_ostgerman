@@ -1,0 +1,7 @@
+.themeToggle {
+  background-color: var(--accent-bg);
+  font-size: xx-large;
+  border: none;
+  padding: 0.25em;
+  margin: 0;
+}

@@ -11,10 +11,7 @@ export const TabControl = ({ items, headerFunc, keyFunc, contentFunc }) => {
         <ul className={styles.tabControl}>
           {items.map((item) => {
             return (
-              <li
-                className={styles.tabControlItemContainer}
-                key={keyFunc(item)}
-              >
+              <li className={styles.itemContainer} key={keyFunc(item)}>
                 <TabItem
                   header={headerFunc(item)}
                   isSelected={item === curItem}

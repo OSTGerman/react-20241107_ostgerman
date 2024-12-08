@@ -7,7 +7,7 @@
   border-radius: 0;
 }
 
-.tabItem_selected {
+.selected {
   background-color: var(--disabled);
   color: var(--text-light);
 }
