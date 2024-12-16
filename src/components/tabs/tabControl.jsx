@@ -16,7 +16,7 @@ export const TabControl = ({ items, headerFunc, keyFunc, contentFunc }) => {
                   header={headerFunc(item)}
                   isSelected={item === curItem}
                   onSelected={() => setCurItem(item)}
-                ></TabItem>
+                />
               </li>
             );
           })}

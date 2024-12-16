@@ -2,8 +2,7 @@ import { useAuth } from "../authContext/useAuth";
 import { Counter } from "../counter/counter";
 import { useCounter } from "../counter/useCounter";
 
-export const MenuItem = ({ menuItem }) => {
-  const { name } = menuItem;
+export const MenuItem = ({ name }) => {
   const { count, increment, decrement } = useCounter(0, 20);
 
   const { isAuthorized } = useAuth();

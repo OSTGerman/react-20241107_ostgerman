@@ -1,13 +1,17 @@
-import { Restaurant } from "../restaurant/restaurant";
+import { useSelector } from "react-redux";
 import { TabControl } from "../tabs/tabControl";
+import { selectRestaurantOptions } from "../../data/slices/restaurantSlice";
+import { RestaurantContainer } from "../restaurant/restaurantContainer";
 
-export const RestaurantsPage = ({ restaurants }) => {
+export const RestaurantsPage = () => {
+  const restaurantOptions = useSelector(selectRestaurantOptions);
+
   return (
     <TabControl
-      items={restaurants}
+      items={restaurantOptions}
       headerFunc={({ name }) => name}
       keyFunc={({ id }) => id}
-      contentFunc={(item) => <Restaurant key={item.id} restaurant={item} />}
+      contentFunc={({ id }) => <RestaurantContainer id={id} />}
     />
   );
 };

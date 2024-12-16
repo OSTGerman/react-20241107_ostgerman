@@ -6,8 +6,8 @@ export const Header = () => {
   return (
     <header className={styles.headerContainer}>
       <h1 className={styles.header}>Reactive Restaurants</h1>
-      <LoginButton></LoginButton>
-      <ThemeToggle></ThemeToggle>
+      <LoginButton />
+      <ThemeToggle />
     </header>
   );
 };
