@@ -8,6 +8,12 @@
 
 .header {
   margin-right: auto;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.header>h1 {
+  color: var(--text);
 }
 
 .headerContainer>div,

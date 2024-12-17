@@ -1,18 +1,14 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../authContext/useAuth";
-import { Counter } from "../counter/counter";
-import { useCounter } from "../counter/useCounter";
+import { MenuItemCounterContainer } from "./menuItemCounterContainer";
 
-export const MenuItem = ({ name }) => {
-  const { count, increment, decrement } = useCounter(0, 20);
-
+export const MenuItem = ({ id, name }) => {
   const { isAuthorized } = useAuth();
 
   return (
     <div>
-      <span>{name}</span>
-      {isAuthorized && (
-        <Counter increment={increment} decrement={decrement} value={count} />
-      )}
+      <Link to={`/dish/${id}`}>{name}</Link>
+      {isAuthorized && <MenuItemCounterContainer id={id} />}
     </div>
   );
 };

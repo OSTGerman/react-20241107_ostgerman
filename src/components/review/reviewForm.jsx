@@ -25,7 +25,7 @@ export const ReviewForm = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          ></input>
+          />
           <label htmlFor="text">Text</label>
           <textarea
             name="text"
@@ -36,13 +36,14 @@ export const ReviewForm = () => {
             {text}
           </textarea>
           <label htmlFor="rating">Rate us</label>
+          <input type="hidden" name="rating" value={rating} />
           <Counter
             name="rating"
             variant={VARIANT_THUMB}
             value={rating}
             increment={incrementRating}
             decrement={decrementRating}
-          ></Counter>
+          />
         </fieldset>
         <input type="button" value="Clear" onClick={clear} />
       </form>

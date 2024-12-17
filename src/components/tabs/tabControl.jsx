@@ -1,28 +1,19 @@
-import { useState } from "react";
 import { TabItem } from "./tabItem";
 import styles from "./tabControl.module.css";
 
-export const TabControl = ({ items, headerFunc, keyFunc, contentFunc }) => {
-  const [curItem, setCurItem] = useState(items[0]);
-
+export const TabControl = ({ items, headerFunc, keyFunc, toFunc }) => {
   return (
-    <>
-      <nav>
-        <ul className={styles.tabControl}>
-          {items.map((item) => {
-            return (
-              <li className={styles.itemContainer} key={keyFunc(item)}>
-                <TabItem
-                  header={headerFunc(item)}
-                  isSelected={item === curItem}
-                  onSelected={() => setCurItem(item)}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <div>{contentFunc(curItem)}</div>
-    </>
+    <nav className={styles.tabControl}>
+      {items.map((item) => {
+        return (
+          <TabItem
+            key={keyFunc(item)}
+            className={styles.itemContainer}
+            header={headerFunc(item)}
+            to={toFunc(item)}
+          />
+        );
+      })}
+    </nav>
   );
 };
