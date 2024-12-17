@@ -1,11 +1,15 @@
-import { Menu } from "../menu/menu";
-import { Reviews } from "../review/reviews";
+import { TabControl } from "../tabs/tabControl";
 
 import styles from "./restaurant.module.css";
 
-export const Restaurant = ({ name, menu, reviews, image }) => {
+const tabData = [
+  { id: "menu", name: "Menu" },
+  { id: "reviews", name: "Reviews" },
+];
+
+export const Restaurant = ({ name, image }) => {
   return (
-    <article>
+    <>
       <h2>{name}</h2>
       <div className={styles.imageContainer}>
         {image ? (
@@ -14,9 +18,13 @@ export const Restaurant = ({ name, menu, reviews, image }) => {
           <div className={styles.imagePlaceholder}></div>
         )}
       </div>
-
-      <Menu data={menu} />
-      <Reviews data={reviews} />
-    </article>
+      <hr />
+      <TabControl
+        items={tabData}
+        headerFunc={({ name }) => name}
+        keyFunc={({ id }) => id}
+        toFunc={({ id }) => id}
+      />
+    </>
   );
 };

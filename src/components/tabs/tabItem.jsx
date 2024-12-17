@@ -1,16 +1,19 @@
 import classNames from "classnames";
 import styles from "./tabItem.module.css";
+import { NavLink } from "react-router-dom";
 
-export const TabItem = ({ header, onSelected, isSelected }) => {
+export const TabItem = ({ header, to }) => {
   return (
-    <button
-      className={classNames(styles.tabItem, {
-        [styles.selected]: isSelected,
-      })}
-      disabled={isSelected}
-      onClick={onSelected}
+    <NavLink
+      className={({ isActive }) =>
+        classNames(styles.tabItem, {
+          [styles.selected]: isActive,
+        })
+      }
+      to={to}
+      
     >
       {header}
-    </button>
+    </NavLink>
   );
 };

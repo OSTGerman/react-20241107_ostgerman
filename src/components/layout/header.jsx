@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../authContext/useAuth";
 import { Cart } from "../cart/cart";
 import { LoginButton } from "../login/loginButton";
@@ -9,7 +10,9 @@ export const Header = () => {
 
   return (
     <header className={styles.headerContainer}>
-      <h1 className={styles.header}>Reactive Restaurants</h1>
+      <Link className={styles.header}>
+        <h1>Reactive Restaurants</h1>
+      </Link>
       {isAuthorized && <Cart />}
       <LoginButton />
       <ThemeToggle />
