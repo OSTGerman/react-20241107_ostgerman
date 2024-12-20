@@ -1,13 +1,30 @@
 .tabItem {
+  display: inline-block;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
   transition: 0.3s;
   border-radius: 0;
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  color: var(--accent-text);
+  padding: 0.5rem 0.9rem;
+  text-decoration: none;
+  line-height: normal;
+}
+
+a.tabItem {
+  color: var(--accent-text);
 }
 
 .selected {
   background-color: var(--disabled);
+  color: var(--text-light);
+  cursor: not-allowed;
+  background-color: var(--disabled);
+  border-color: var(--disabled);
+}
+
+a.selected {
   color: var(--text-light);
 }

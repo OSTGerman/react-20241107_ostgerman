@@ -19,5 +19,9 @@ export const RestaurantContainer = ({ id }) => {
     loadImg();
   }, [id]);
 
-  return <Restaurant name={name} menu={menu} reviews={reviews} image={image} />;
+  return (
+    restaurant && (
+      <Restaurant name={name} menu={menu} reviews={reviews} image={image} />
+    )
+  );
 };
