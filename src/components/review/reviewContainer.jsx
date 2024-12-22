@@ -1,13 +1,12 @@
 import { useSelector } from "react-redux";
 import { Review } from "./review";
-import { selectReviewById } from "../../data/slices/reviewSlice";
-import { selectUserById } from "../../data/slices/userSlice";
+import { selectReviewById } from "../../data/entities/review/reviewSlice";
+import { selectUserById } from "../../data/entities/user/userSlice";
 
 export const ReviewContainer = ({ id }) => {
   const review = useSelector((state) => selectReviewById(state, id));
-  const { text, userId } = review;
 
-  const { name } = useSelector((state) => selectUserById(state, userId));
-  
-  return <Review text={text} userName={name} />;
+  const user = useSelector((state) => selectUserById(state, review?.userId));
+
+  return <Review review={review} user={user} />;
 };

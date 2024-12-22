@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DEFAULT_THEME,
   THEME_DARK,
@@ -13,6 +13,14 @@ export const ThemeContextProvider = ({ children }) => {
     setTheme((currentTheme) =>
       currentTheme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT
     );
+
+  useEffect(() => {
+    if (theme === THEME_DARK) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

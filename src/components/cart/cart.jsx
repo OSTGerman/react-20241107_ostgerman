@@ -1,6 +1,6 @@
 import styles from "./cart.module.css";
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../../data/slices/cartSlice";
+import { selectCartItems } from "../../data/entities/cart/cartSlice";
 import { CartItemContainer } from "./cartItemContainer";
 
 export const Cart = () => {

@@ -1,10 +1,6 @@
-import { useAuth } from "../authContext/useAuth";
 import { ReviewContainer } from "./reviewContainer";
-import { ReviewForm } from "./reviewForm";
 
 export const Reviews = ({ data: reviews }) => {
-  const { isAuthorized } = useAuth();
-
   return (
     <>
       <h3>Reviews</h3>
@@ -19,7 +15,6 @@ export const Reviews = ({ data: reviews }) => {
           ))
         )}
       </ul>
-      {isAuthorized && <ReviewForm />}
     </>
   );
 };

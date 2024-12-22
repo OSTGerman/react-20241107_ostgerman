@@ -7,7 +7,13 @@ const tabData = [
   { id: "reviews", name: "Reviews" },
 ];
 
-export const Restaurant = ({ name, image }) => {
+export const Restaurant = ({ restaurant }) => {
+  if (!restaurant) {
+    return null;
+  }
+
+  const { name, img: image } = restaurant;
+
   return (
     <>
       <h2>{name}</h2>

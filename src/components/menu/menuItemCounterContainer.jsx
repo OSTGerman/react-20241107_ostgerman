@@ -3,7 +3,7 @@ import {
   addMenuItemToCart,
   removeMenuItemFromCart,
   selectCartMenuItemCountById,
-} from "../../data/slices/cartSlice";
+} from "../../data/entities/cart/cartSlice";
 import { Counter } from "../counter/counter";
 
 export const MenuItemCounterContainer = ({ id }) => {
