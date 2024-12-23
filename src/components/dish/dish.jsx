@@ -4,11 +4,17 @@ import { MenuItemCounterContainer } from "../menu/menuItemCounterContainer";
 export const DishItem = ({ dish }) => {
   const { isAuthorized } = useAuth();
 
-  const { id, name, ingredients } = dish;
+  if (!dish) {
+    return null;
+  }
+
+  const { id, name, ingredients, price } = dish;
 
   return (
     <article>
-      <h2>{name}</h2>
+      <h2>
+        {name} - ${price}
+      </h2>
       <span>
         <em>Contains: </em>
       </span>
