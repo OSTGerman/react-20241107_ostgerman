@@ -1,17 +1,20 @@
-import { getRestaurantById } from "../../data/entities/restaurant/getRestaurantById";
-import { selectRestaurantById } from "../../data/entities/restaurant/restaurantSlice";
-import { RequestStatusAware } from "../requestStatusAware/requestStatusAware";
+import { useGetRestaurantsQuery } from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 import { Restaurant } from "./restaurant";
-import { useSelector } from "react-redux";
 
 export const RestaurantContainer = ({ id }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+  const query = useGetRestaurantsQuery(undefined, {
+    selectFromResult: (result) => ({
+      ...result,
+      data: result?.data?.find(({ id: restaurantId }) => restaurantId === id),
+    }),
+  });
 
-  const requestStatus = getRestaurantById(id);
+  const { data: restaurant } = query;
 
   return (
-    <RequestStatusAware requestStatus={requestStatus}>
+    <QueryStatusAware query={query}>
       <Restaurant restaurant={restaurant} />
-    </RequestStatusAware>
+    </QueryStatusAware>
   );
 };

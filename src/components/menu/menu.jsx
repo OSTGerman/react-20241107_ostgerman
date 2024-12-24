@@ -1,17 +1,17 @@
-import { MenuItemContainer } from "./menuItemContainer";
+import { MenuItem } from "./menuItem";
 
-export const Menu = ({ data: menuIds }) => {
+export const Menu = ({ data: menu }) => {
   return (
     <>
       <h3>Menu</h3>
       <ul>
-        {!menuIds?.length ? (
+        {!menu?.length ? (
           <span>Call or visit for menu</span>
         ) : (
-          menuIds.map((id) => {
+          menu.map((menuItem) => {
             return (
-              <li key={id}>
-                <MenuItemContainer id={id} />
+              <li key={menuItem.id}>
+                <MenuItem menuItem={menuItem} />
               </li>
             );
           })

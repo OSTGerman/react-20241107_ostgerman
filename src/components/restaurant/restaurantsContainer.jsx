@@ -1,25 +1,20 @@
-import { useSelector } from "react-redux";
-import { useRequest } from "../../data/hooks/useRequest";
-import { getRestaurants } from "../../data/entities/restaurant/getRestaurants";
-import { selectRestaurants } from "../../data/entities/restaurant/restaurantSlice";
 import { TabControl } from "../tabs/tabControl";
-import { RequestStatusAware } from "../requestStatusAware/requestStatusAware";
+import { useGetRestaurantsQuery } from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
 export const RestaurantsContainer = () => {
-  const restaurants = useSelector(selectRestaurants);
+  const query = useGetRestaurantsQuery();
 
-  const requestStatus = useRequest(getRestaurants);
+  const { data: restaurants } = query;
 
   return (
-    <>
-      <RequestStatusAware requestStatus={requestStatus}>
-        <TabControl
-          items={restaurants}
-          headerFunc={({ name }) => name}
-          keyFunc={({ id }) => id}
-          toFunc={({ id }) => id}
-        />
-      </RequestStatusAware>
-    </>
+    <QueryStatusAware query={query}>
+      <TabControl
+        items={restaurants}
+        headerFunc={({ name }) => name}
+        keyFunc={({ id }) => id}
+        toFunc={({ id }) => id}
+      />
+    </QueryStatusAware>
   );
 };
