@@ -1,10 +1,14 @@
-import { useSelector } from "react-redux";
-import { selectMenuItemById } from "../../data/entities/menu/menuSlice";
 import { CartItem } from "./cartItem";
+import { useGetMenuItemByIdQuery } from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
 export const CartItemContainer = ({ id }) => {
-  const menuItem = useSelector((state) => selectMenuItemById(state, id));
-  const { name } = menuItem;
+  const query = useGetMenuItemByIdQuery(id);
+  const { data: menuItem } = query;
 
-  return <CartItem id={id} name={name} />;
+  return (
+    <QueryStatusAware query={query}>
+      <CartItem menuItem={menuItem} />
+    </QueryStatusAware>
+  );
 };

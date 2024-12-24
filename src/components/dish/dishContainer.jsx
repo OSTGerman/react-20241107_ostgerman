@@ -1,18 +1,15 @@
-import { useSelector } from "react-redux";
-import { selectMenuItemById } from "../../data/entities/menu/menuSlice";
 import { DishItem } from "./dish";
-import { useRequest } from "../../data/hooks/useRequest";
-import { getMenuItemById } from "../../data/entities/menu/getMenuItemById";
-import { RequestStatusAware } from "../requestStatusAware/requestStatusAware";
+import { useGetMenuItemByIdQuery } from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
 export const DishContainer = ({ id }) => {
-  const dish = useSelector((state) => selectMenuItemById(state, id));
+  const query = useGetMenuItemByIdQuery(id);
 
-  const requestStatus = useRequest(getMenuItemById, id);
+  const { data: dish } = query;
 
   return (
-    <RequestStatusAware requestStatus={requestStatus}>
+    <QueryStatusAware query={query}>
       <DishItem dish={dish} />
-    </RequestStatusAware>
+    </QueryStatusAware>
   );
 };

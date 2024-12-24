@@ -1,20 +1,15 @@
-import { useSelector } from "react-redux";
 import { Menu } from "./menu";
-import { useRequest } from "../../data/hooks/useRequest";
-import { getMenuByRestaurantId } from "../../data/entities/menu/getMenuByRestaurantId";
-import { RequestStatusAware } from "../requestStatusAware/requestStatusAware";
-import { selectRestaurantById } from "../../data/entities/restaurant/restaurantSlice";
+import { useGetMenuByRestaurantIdQuery } from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
 export const MenuContainer = ({ restaurantId }) => {
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const query = useGetMenuByRestaurantIdQuery(restaurantId);
 
-  const requestStatus = useRequest(getMenuByRestaurantId, restaurantId);
+  const { data } = query;
 
   return (
-    <RequestStatusAware requestStatus={requestStatus}>
-      <Menu data={restaurant?.menu} />
-    </RequestStatusAware>
+    <QueryStatusAware query={query}>
+      <Menu data={data} />
+    </QueryStatusAware>
   );
 };

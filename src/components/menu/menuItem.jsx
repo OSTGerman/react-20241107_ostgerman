@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../authContext/useAuth";
 import { MenuItemCounterContainer } from "./menuItemCounterContainer";
 
-export const MenuItem = ({ id, name }) => {
+export const MenuItem = ({ menuItem }) => {
   const { isAuthorized } = useAuth();
+
+  const { id, name } = menuItem;  
 
   return (
     <div>

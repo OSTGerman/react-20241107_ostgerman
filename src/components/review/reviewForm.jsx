@@ -2,13 +2,13 @@ import { useAuth } from "../authContext/useAuth";
 import { Counter, VARIANT_THUMB } from "../counter/counter";
 import { useReview } from "./useReview";
 
-export const ReviewForm = () => {
-  const { state, setName, setText, incrementRating, decrementRating, clear } =
-    useReview();
+export const ReviewForm = ({ review, submit }) => {
+  const { state, setText, incrementRating, decrementRating, clear } =
+    useReview(review);
 
-  const { name, text, rating } = state;
+  const { text, rating } = state;
 
-  const { login } = useAuth();
+  const { login, id: userId } = useAuth();
 
   return (
     <>
@@ -19,13 +19,6 @@ export const ReviewForm = () => {
         }}
       >
         <fieldset>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
           <label htmlFor="text">Text</label>
           <textarea
             name="text"
@@ -46,6 +39,11 @@ export const ReviewForm = () => {
           />
         </fieldset>
         <input type="button" value="Clear" onClick={clear} />
+        <input
+          type="button"
+          value="Submit"
+          onClick={() => submit({ text, rating, userId })}
+        />
       </form>
     </>
   );
