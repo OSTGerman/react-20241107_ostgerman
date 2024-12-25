@@ -3,9 +3,9 @@ import { AuthContext } from "./authContext";
 
 export const useAuth = () => {
   const {
-    auth: { isAuthorized, login },
+    auth: { isAuthorized, login, id },
     toggleAuth,
   } = useContext(AuthContext);
 
-  return { isAuthorized, login, toggleAuth };
+  return { isAuthorized, login, id, toggleAuth };
 };

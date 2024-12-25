@@ -1,12 +1,31 @@
-import { useSelector } from "react-redux";
 import { Review } from "./review";
-import { selectReviewById } from "../../data/entities/review/reviewSlice";
-import { selectUserById } from "../../data/entities/user/userSlice";
+import {
+  useEditReviewMutation,
+  useGetUsersQuery,
+} from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
-export const ReviewContainer = ({ id }) => {
-  const review = useSelector((state) => selectReviewById(state, id));
+export const ReviewContainer = ({ review }) => {
+  const { data: user } = useGetUsersQuery(undefined, {
+    selectFromResult: (result) => {
+      return {
+        ...result,
+        data: result?.data?.find(({ id: userId }) => userId === review?.userId),
+      };
+    },
+  });
 
-  const user = useSelector((state) => selectUserById(state, review?.userId));
+  const [editReview, editQuery] = useEditReviewMutation();
 
-  return <Review review={review} user={user} />;
+  return (
+    <QueryStatusAware query={editQuery}>
+      <Review
+        review={review}
+        user={user}
+        onEdit={(editedReview) =>
+          editReview({ reviewId: review?.id, review: editedReview })
+        }
+      />
+    </QueryStatusAware>
+  );
 };

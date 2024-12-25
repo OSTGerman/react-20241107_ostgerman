@@ -1,34 +1,35 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../data/entities/restaurant/restaurantSlice";
-import { RequestStatusAware } from "../requestStatusAware/requestStatusAware";
-import { getReviewsByRestaurantId } from "../../data/entities/review/getReviewsByRestaurantId";
-import { useRequest } from "../../data/hooks/useRequest";
 import { Reviews } from "./reviews";
-import { getUsers } from "../../data/entities/user/getUsers";
 import { useAuth } from "../authContext/useAuth";
 import { ReviewForm } from "./reviewForm";
+import {
+  useAddReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../data/services/api";
+import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 
 export const ReviewsContainer = ({ restaurantId }) => {
   const { isAuthorized } = useAuth();
 
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const getQuery = useGetReviewsByRestaurantIdQuery(restaurantId);
 
-  const requestStatusReviews = useRequest(
-    getReviewsByRestaurantId,
-    restaurantId
-  );
-  const requestStatusUsers = useRequest(getUsers);
+  const [addReview, addQuery] = useAddReviewMutation();
+
+  const { data: reviews } = getQuery;
 
   return (
     <>
-      <RequestStatusAware requestStatus={requestStatusReviews}>
-        <RequestStatusAware requestStatus={requestStatusUsers}>
-          <Reviews data={restaurant?.reviews} />
-        </RequestStatusAware>
-      </RequestStatusAware>
-      {isAuthorized && <ReviewForm />}
+      <QueryStatusAware query={getQuery}>
+        <Reviews data={reviews} />
+      </QueryStatusAware>
+      {isAuthorized && (
+        <QueryStatusAware query={addQuery}>
+          <ReviewForm
+            submit={(review) => {
+              addReview({ restaurantId, review });
+            }}
+          />
+        </QueryStatusAware>
+      )}
     </>
   );
 };

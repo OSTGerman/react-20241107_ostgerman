@@ -8,9 +8,9 @@ export const Reviews = ({ data: reviews }) => {
         {!reviews?.length ? (
           <span>Be the first to review</span>
         ) : (
-          reviews.map((id) => (
-            <li key={id}>
-              <ReviewContainer id={id} />
+          reviews.map((review) => (
+            <li key={review.id}>
+              <ReviewContainer review={review} />
             </li>
           ))
         )}
