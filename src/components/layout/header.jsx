@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { useAuth } from "../authContext/useAuth";
 import { Cart } from "../cart/cart";
 import { LoginButton } from "../login/loginButton";
@@ -10,7 +12,7 @@ export const Header = () => {
 
   return (
     <header className={styles.headerContainer}>
-      <Link className={styles.header}>
+      <Link className={styles.header} href="/">
         <h1>Reactive Restaurants</h1>
       </Link>
       {isAuthorized && <Cart />}

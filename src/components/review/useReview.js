@@ -1,3 +1,5 @@
+"use client";
+
 import { useReducer } from "react";
 
 const DEFAULT_REVIEW_STATE = {

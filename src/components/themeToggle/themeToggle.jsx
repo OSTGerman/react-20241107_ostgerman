@@ -1,3 +1,5 @@
+"use client";
+
 import { THEME_DARK } from "../themeContext/themeContext";
 import { useTheme } from "../themeContext/useTheme";
 import styles from "./themeToggle.module.css";

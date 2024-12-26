@@ -1,3 +1,5 @@
+"use client";
+
 import { DishItem } from "./dish";
 import { useGetMenuItemByIdQuery } from "../../data/services/api";
 import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";

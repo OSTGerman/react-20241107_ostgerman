@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetRestaurantsQuery } from "../../data/services/api";
 import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
 import { Restaurant } from "./restaurant";

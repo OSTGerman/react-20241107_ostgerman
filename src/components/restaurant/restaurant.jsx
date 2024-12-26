@@ -12,7 +12,7 @@ export const Restaurant = ({ restaurant }) => {
     return null;
   }
 
-  const { name, img: image } = restaurant;
+  const { name, img: image, id: restaurantId } = restaurant;
 
   return (
     <>
@@ -29,7 +29,7 @@ export const Restaurant = ({ restaurant }) => {
         items={tabData}
         headerFunc={({ name }) => name}
         keyFunc={({ id }) => id}
-        toFunc={({ id }) => id}
+        toFunc={({ id }) => `/restaurants/${restaurantId}/${id}`}
       />
     </>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext } from "react";
 
 export const THEME_LIGHT = "light";

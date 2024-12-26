@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const HomePage = () => {
   return (
@@ -20,7 +20,7 @@ export const HomePage = () => {
         </div>
         <h2>Ready to Dine With Us?</h2>
         <p>Book a table or explore our delicious menu online.</p>
-        <Link className="button" to="/restaurants">
+        <Link className="button" href="/restaurants">
           Explore Restaurants
         </Link>
       </section>
