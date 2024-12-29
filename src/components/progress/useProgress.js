@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 // https://javascript.info/size-and-scroll-window#width-height-of-the-document

@@ -1,3 +1,5 @@
+"use client";
+
 import { TabControl } from "../tabs/tabControl";
 import { useGetRestaurantsQuery } from "../../data/services/api";
 import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
@@ -13,7 +15,8 @@ export const RestaurantsContainer = () => {
         items={restaurants}
         headerFunc={({ name }) => name}
         keyFunc={({ id }) => id}
-        toFunc={({ id }) => id}
+        toFunc={({ id }) => `/restaurants/${id}/menu`}
+        isActiveFunc={({ id }) => `/restaurants/${id}`}
       />
     </QueryStatusAware>
   );

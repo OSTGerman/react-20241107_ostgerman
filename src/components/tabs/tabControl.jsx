@@ -1,7 +1,13 @@
 import { TabItem } from "./tabItem";
 import styles from "./tabControl.module.css";
 
-export const TabControl = ({ items, headerFunc, keyFunc, toFunc }) => {
+export const TabControl = ({
+  items,
+  headerFunc,
+  keyFunc,
+  toFunc,
+  isActiveFunc,
+}) => {
   return (
     <nav className={styles.tabControl}>
       {items.map((item) => {
@@ -11,6 +17,7 @@ export const TabControl = ({ items, headerFunc, keyFunc, toFunc }) => {
             className={styles.itemContainer}
             header={headerFunc(item)}
             to={toFunc(item)}
+            activeSegment={isActiveFunc ? isActiveFunc(item) : toFunc(item)}
           />
         );
       })}
