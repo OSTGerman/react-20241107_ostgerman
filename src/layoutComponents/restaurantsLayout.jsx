@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import { RestaurantsContainer } from "../components/restaurant/restaurantsContainer";
 
-export const RestaurantsLayout = ({ children }) => {
+export const RestaurantsLayout = async ({ children }) => {
   return (
     <>
-      <RestaurantsContainer />
+      <Suspense fallback="Loading restaurants...">
+        <RestaurantsContainer />
+      </Suspense>
       {children}
     </>
   );

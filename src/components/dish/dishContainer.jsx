@@ -1,17 +1,8 @@
-"use client";
-
 import { DishItem } from "./dish";
-import { useGetMenuItemByIdQuery } from "../../data/services/api";
-import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
+import { getMenuItemById } from "../../data/services/getMenuItemById";
 
-export const DishContainer = ({ id }) => {
-  const query = useGetMenuItemByIdQuery(id);
+export const DishContainer = async ({ id }) => {
+  const dish = await getMenuItemById(id);
 
-  const { data: dish } = query;
-
-  return (
-    <QueryStatusAware query={query}>
-      <DishItem dish={dish} />
-    </QueryStatusAware>
-  );
+  return <DishItem dish={dish} />;
 };

@@ -1,10 +1,13 @@
+import { Suspense } from "react";
 import { RestaurantContainer } from "../components/restaurant/restaurantContainer";
 
 export const RestaurantLayout = async ({ params, children }) => {
   const { restaurantId } = await params;
   return (
     <article>
-      <RestaurantContainer id={restaurantId} />
+      <Suspense fallback="Loading restaurant...">
+        <RestaurantContainer id={restaurantId} />
+      </Suspense>
       {children}
     </article>
   );
