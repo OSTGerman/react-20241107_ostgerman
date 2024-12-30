@@ -1,17 +1,8 @@
-"use client";
-
 import { Menu } from "./menu";
-import { useGetMenuByRestaurantIdQuery } from "../../data/services/api";
-import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
+import { getMenuByRestaurantId } from "../../data/services/getMenuByRestaurantId";
 
-export const MenuContainer = ({ restaurantId }) => {
-  const query = useGetMenuByRestaurantIdQuery(restaurantId);
+export const MenuContainer = async ({ restaurantId }) => {
+  const menu = await getMenuByRestaurantId(restaurantId);
 
-  const { data } = query;
-
-  return (
-    <QueryStatusAware query={query}>
-      <Menu data={data} />
-    </QueryStatusAware>
-  );
+  return <Menu data={menu} />;
 };

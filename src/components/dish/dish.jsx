@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth } from "../authContext/useAuth";
 import { MenuItemCounterContainer } from "../menu/menuItemCounterContainer";
 

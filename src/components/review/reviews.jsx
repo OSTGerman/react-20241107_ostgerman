@@ -1,6 +1,6 @@
-import { ReviewContainer } from "./reviewContainer";
+import { Review } from "./review";
 
-export const Reviews = ({ data: reviews }) => {
+export const Reviews = ({ data: reviews, users }) => {
   return (
     <>
       <h3>Reviews</h3>
@@ -8,11 +8,14 @@ export const Reviews = ({ data: reviews }) => {
         {!reviews?.length ? (
           <span>Be the first to review</span>
         ) : (
-          reviews.map((review) => (
-            <li key={review.id}>
-              <ReviewContainer review={review} />
-            </li>
-          ))
+          reviews.map((review) => {
+            const user = users?.find((user) => user.id === review.userId);
+            return (
+              <li key={review.id}>
+                <Review review={review} user={user} />
+              </li>
+            );
+          })
         )}
       </ul>
     </>

@@ -1,22 +1,10 @@
-"use client";
-
-import { useGetRestaurantsQuery } from "../../data/services/api";
-import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
+import { getRestaurants } from "../../data/services/getRestaurants";
 import { Restaurant } from "./restaurant";
 
-export const RestaurantContainer = ({ id }) => {
-  const query = useGetRestaurantsQuery(undefined, {
-    selectFromResult: (result) => ({
-      ...result,
-      data: result?.data?.find(({ id: restaurantId }) => restaurantId === id),
-    }),
-  });
+export const RestaurantContainer = async ({ id }) => {
+  const restaurants = await getRestaurants();
 
-  const { data: restaurant } = query;
+  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
 
-  return (
-    <QueryStatusAware query={query}>
-      <Restaurant restaurant={restaurant} />
-    </QueryStatusAware>
-  );
+  return <Restaurant restaurant={restaurant} />;
 };

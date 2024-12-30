@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useAuth } from "../authContext/useAuth";
-import { ReviewForm } from "./reviewForm";
+import { ReviewFormContainer } from "./reviewFormContainer";
 
-export const Review = ({ review, user, onEdit }) => {
+export const Review = ({ review, user }) => {
   const { isAuthorized, id: loggedUserId } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -37,7 +37,7 @@ export const Review = ({ review, user, onEdit }) => {
         )}
       </div>
       {isAuthorized && isEditing && (
-        <ReviewForm review={review} submit={onEdit} />
+        <ReviewFormContainer editedReview={review} />
       )}
     </>
   );

@@ -1,14 +1,22 @@
+"use client";
+
 import { CartItem } from "./cartItem";
-import { useGetMenuItemByIdQuery } from "../../data/services/api";
-import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
+import { getMenuItemById } from "../../data/services/getMenuItemById";
+import { useEffect, useState } from "react";
 
 export const CartItemContainer = ({ id }) => {
-  const query = useGetMenuItemByIdQuery(id);
-  const { data: menuItem } = query;
+  const [menuItem, setMenuItem] = useState();
 
-  return (
-    <QueryStatusAware query={query}>
-      <CartItem menuItem={menuItem} />
-    </QueryStatusAware>
-  );
+  useEffect(() => {
+    const fetchMenuItem = async () => {
+      const data = await getMenuItemById(id);
+      setMenuItem(data);
+    };
+    fetchMenuItem();
+  }, [id]);
+
+  if (!menuItem) {
+    return "Loading item...";
+  }
+  return <CartItem menuItem={menuItem} />;
 };

@@ -1,37 +1,16 @@
-"use client";
-
 import { Reviews } from "./reviews";
-import { useAuth } from "../authContext/useAuth";
-import { ReviewForm } from "./reviewForm";
-import {
-  useAddReviewMutation,
-  useGetReviewsByRestaurantIdQuery,
-} from "../../data/services/api";
-import { QueryStatusAware } from "../queryStatusAware/queryStatusAware";
+import { getReviewsByRestaurantId } from "../../data/services/getReviewsByRestaurantId";
+import { ReviewFormContainer } from "./reviewFormContainer";
+import { getUsers } from "../../data/services/getUsers";
 
-export const ReviewsContainer = ({ restaurantId }) => {
-  const { isAuthorized } = useAuth();
-
-  const getQuery = useGetReviewsByRestaurantIdQuery(restaurantId);
-
-  const [addReview, addQuery] = useAddReviewMutation();
-
-  const { data: reviews } = getQuery;
+export const ReviewsContainer = async ({ restaurantId }) => {
+  const reviews = await getReviewsByRestaurantId(restaurantId);
+  const users = await getUsers();
 
   return (
     <>
-      <QueryStatusAware query={getQuery}>
-        <Reviews data={reviews} />
-      </QueryStatusAware>
-      {isAuthorized && (
-        <QueryStatusAware query={addQuery}>
-          <ReviewForm
-            submit={(review) => {
-              addReview({ restaurantId, review });
-            }}
-          />
-        </QueryStatusAware>
-      )}
+      <Reviews data={reviews} users={users} />
+      <ReviewFormContainer restaurantId={restaurantId} />
     </>
   );
 };

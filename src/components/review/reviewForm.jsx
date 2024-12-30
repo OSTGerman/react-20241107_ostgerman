@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth } from "../authContext/useAuth";
 import { Counter, VARIANT_THUMB } from "../counter/counter";
 import { useReview } from "./useReview";
@@ -42,7 +44,9 @@ export const ReviewForm = ({ review, submit }) => {
         <input
           type="button"
           value="Submit"
-          onClick={() => submit({ text, rating, userId })}
+          onClick={() => {
+            submit({ text, rating, userId, id: review?.id });
+          }}
         />
       </form>
     </>
